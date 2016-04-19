@@ -1,7 +1,5 @@
-describe SquareRoot::BinarySearchSquareRootComputer do
-  subject(:computer) { SquareRoot::BinarySearchSquareRootComputer.new }
+require File.dirname(__FILE__) + '/support/square_root_computer_shared_spec.rb'
 
-  it 'computes square root' do
-    expect(computer.get_root(2)).to be_within(0.01).of(1.41)
-  end
+describe SquareRoot::BinarySearchSquareRootComputer do
+  it_behaves_like 'SquareRootComputer'
 end
