@@ -3,6 +3,7 @@ module SquareRoot
   class BinarySearchSquareRootComputer
     # TODO: handle negatives
     def get_root(x, precision)
+      validate_input(x, precision)
       if x >= 1
        left, right = 0, x.to_f
       else
@@ -19,6 +20,12 @@ module SquareRoot
           left = middle
         end
       end
+    end
+
+    private
+
+    def validate_input(x, precision)
+      fail ArgumentError.new("Invalid precision: #{precision}, must be positive") unless precision > 0
     end
   end
 end

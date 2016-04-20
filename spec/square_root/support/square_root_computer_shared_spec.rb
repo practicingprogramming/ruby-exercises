@@ -17,7 +17,6 @@ shared_examples 'SquareRootComputer' do
     end
 
     context 'input is negative' do
-
     end
 
     context 'input is zero' do
@@ -33,11 +32,15 @@ shared_examples 'SquareRootComputer' do
     end
 
     context 'precision is zero' do
-
+      it 'throws an exception' do
+        expect { computer.get_root(2, 0) }.to raise_error(ArgumentError)
+      end
     end
 
     context 'precision is negative' do
-
+      it 'throws an exception' do
+        expect { computer.get_root(2, -0.1) }.to raise_error(ArgumentError)
+      end
     end
   end
 end
