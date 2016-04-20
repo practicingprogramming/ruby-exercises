@@ -3,11 +3,7 @@ module SquareRoot
   class BinarySearchSquareRootComputer
     def get_root(x, precision)
       validate_input(x, precision)
-      if x >= 1
-       left, right = 0, x.to_f
-      else
-        left, right = x.to_f, 1
-      end
+      left, right = initial_boundaries(x)
       prev = nil
       loop do
         middle = (left + right) / 2
@@ -24,12 +20,16 @@ module SquareRoot
     private
 
     def validate_input(x, precision)
-      fail ArgumentError.new("Invalid precision: #{precision}, must be positive") unless precision > 0
-      fail ArgumentError.new("Invalid input: #{x}, must be non-negative") unless x >= 0
+      raise ArgumentError, "Invalid precision: #{precision}, must be positive" unless precision > 0
+      raise ArgumentError, "Invalid input: #{x}, must be non-negative" unless x >= 0
     end
 
     def finished?(current, previous, precision)
       !previous.nil? && (current - previous).abs < precision.to_f / 2
+    end
+
+    def initial_boundaries(x)
+      x >= 1 ? [0, x.to_f] : [x.to_f, 1]
     end
   end
 end
