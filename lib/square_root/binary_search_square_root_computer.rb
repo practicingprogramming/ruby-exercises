@@ -26,6 +26,7 @@ module SquareRoot
 
     def validate_input(x, precision)
       fail ArgumentError.new("Invalid precision: #{precision}, must be positive") unless precision > 0
+      fail ArgumentError.new("Invalid input: #{x}, must be non-negative") unless x >= 0
     end
   end
 end

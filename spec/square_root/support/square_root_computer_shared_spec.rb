@@ -17,6 +17,9 @@ shared_examples 'SquareRootComputer' do
     end
 
     context 'input is negative' do
+      it 'throws an exception' do
+        expect { computer.get_root(-2, 0.1) }.to raise_error(ArgumentError)
+      end
     end
 
     context 'input is zero' do
