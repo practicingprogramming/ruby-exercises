@@ -10,7 +10,10 @@ shared_examples 'SquareRootComputer' do
     end
 
     context 'input is between zero and one' do
-
+      it 'computes square root of 0.5' do
+        expect(computer.get_root(0.5, 0.1)).to be_within(0.1).of(0.7)
+        expect(computer.get_root(0.5, 0.00001)).to be_within(0.00001).of(0.70711)
+      end
     end
 
     context 'input is negative' do
