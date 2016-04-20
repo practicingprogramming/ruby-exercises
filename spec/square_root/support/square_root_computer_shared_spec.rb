@@ -21,11 +21,15 @@ shared_examples 'SquareRootComputer' do
     end
 
     context 'input is zero' do
-
+      it 'computes square root' do
+        expect(computer.get_root(0, 0.00001)).to be_within(0.00001).of(0)
+      end
     end
 
     context 'input is one' do
-
+      it 'computes square root' do
+        expect(computer.get_root(1, 0.00001)).to be_within(0.00001).of(1)
+      end
     end
 
     context 'precision is zero' do
